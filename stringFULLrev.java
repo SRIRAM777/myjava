@@ -1,45 +1,49 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 
-public class arrayminmax {
+public class fullrev {
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) 
 	{
-		Scanner sc = new Scanner(System.in);
-		System.out.println("enter the number of elements");
-		int n= sc.nextInt();
-		System.out.println("enter the array");
-		int i,j,min=0,max=0;
-		int []a=new int[n];
-		for(i=0;i<n;i++)
-			a[i]=sc.nextInt();
-		Arrays.sort(a);
-		int k;
-		min=a[n-1];
+
+		int []a=new int[100];
+		Scanner sca = new Scanner(System.in);
+		System.out.println("enter the string");
+		String s = sca.nextLine();
+		int n= s.length();
+		int i,j,k=1;
+		a[0]=0;
+		
 		for(i=0;i<n;i++)
 		{
-			for(j=1+i;j<n;j++)
+			if(s.toCharArray()[i]==' ')
 			{
-				k=a[j]-a[i];
-				if(k>max)
-					max=k;
-				if(k<min)
-					min=k;
-				//System.out.println(a[i]);
-			}
+				a[k]=i;
+				k++;
+			}		
 		}
-		System.out.println("min difference====="+min);
-		System.out.println("max difference====="+max);
-		
-		// TODO Auto-generated method stub
-
+		char b;
+		a[k]=n;
+		String ans="";
+		i=1;
+		while(i<=k)
+		{
+			for(j=a[i]-1;j>=a[i-1];j--)
+			{	
+			b=s.toCharArray()[j];
+			ans+=b;
+			}
+			i++;
+			ans+=" ";
+		}
+		System.out.println(""+ans);
 	}
 
 }
+
 /*
 enter the string
 hello world
